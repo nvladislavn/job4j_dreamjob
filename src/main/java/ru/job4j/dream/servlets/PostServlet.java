@@ -20,9 +20,16 @@ import java.time.LocalDate;
 public class PostServlet extends HttpServlet {
 
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws  IOException {
         req.setCharacterEncoding("UTF-8");
-        Store.instOf().save(new Post(0, req.getParameter("name"), "", LocalDate.now()));
+        Store.instOf().save(
+                new Post(
+                        Integer.parseInt(req.getParameter("id")),
+                        req.getParameter("name"),
+                        "",
+                        LocalDate.now()
+                )
+        );
         resp.sendRedirect(req.getContextPath() + "/posts.jsp");
     }
 }

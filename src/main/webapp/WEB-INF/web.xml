@@ -28,5 +28,4 @@
         <servlet-name>CandidateServlet</servlet-name>
         <url-pattern>/candidate/save</url-pattern>
     </servlet-mapping>
-
 </web-app>

@@ -44,12 +44,24 @@ public class Store {
     }
 
     public void save(Post post) {
-        post.setId(POST_ID.incrementAndGet());
+        if (post.getId() == 0) {
+            post.setId(POST_ID.incrementAndGet());
+        }
         posts.put(post.getId(), post);
     }
 
+    public Post findPostById(int id) {
+        return posts.get(id);
+    }
+
+    public Candidate findCandidateById(int id) {
+        return candidates.get(id);
+    }
+
     public void save(Candidate candidate) {
-        candidate.setId(CANDIDATE_ID.incrementAndGet());
+        if (candidate.getId() == 0) {
+            candidate.setId(CANDIDATE_ID.incrementAndGet());
+        }
         candidates.put(candidate.getId(), candidate);
     }
 
@@ -64,4 +76,5 @@ public class Store {
     public Collection<Candidate> findAllCandidates() {
         return candidates.values();
     }
+
 }
